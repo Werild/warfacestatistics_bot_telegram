@@ -9,10 +9,10 @@ from modules.online import online_command
 from modules.clan import clan_command
 from modules.help import help_command
 
-# токен вашего бота из BotFather
-TOKEN = ''
-
-
+# чтение токена из файла
+with open('config.json') as f:
+    config = json.load(f)
+    TOKEN = config['token']
 
 # функция, которая будет вызываться при команде /start
 def start_command(update, context):
@@ -36,8 +36,6 @@ def message_handler(update, context):
         info_command(update, context)
     else:
         context.bot.send_message(chat_id=update.effective_chat.id, text='Используйте команды для работы с ботом.')
-        logger.info(f'User @{update.effective_user.username} sent message: {update.message.text}.') 
-
 
 # создаем экземпляр бота и добавляем обработчики команд
 bot = telegram.Bot(token=TOKEN)
