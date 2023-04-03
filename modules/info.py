@@ -21,9 +21,10 @@ def info_command(update: Update, context):
     result = response.json()
     if result.get('code') == 'player_not_found':
         context.bot.send_message(chat_id=update.effective_chat.id, text='Игрок с таким никнеймом не найден.')
-        logger.info(f'User @{update.effective_user.username} requested info for non-existent player {context.args[0]}.')
         return
-
+    elif result.get('code') == 'inactive':
+        context.bot.send_message(chat_id=update.effective_chat.id, text=f'К сожалению, игрок "{context.args[0]}" ни разу не был сохранен в нашей базе данных, мы не сможем вывести его статистику =(')
+        return
     if response.status_code == 200:
         # если все ок, выводим результат в чат-бота в виде текста
         nickname = result['player']['nickname']
