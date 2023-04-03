@@ -28,9 +28,7 @@ def start_command(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Привет! Я бот для получения информации о Warface. Вот мои доступные команды:", reply_markup=reply_markup)
     # сохраняем команду, на которую пользователь нажмет в меню, в контексте
     context.user_data['command'] = ''
-    logger.info(f'User @{update.effective_user.username} started the bot.')
-
-
+    
 def message_handler(update, context):
     # проверяем, что пользователь ввел никнейм при вызове команды /info
     if context.user_data.get('command') == '/info':
