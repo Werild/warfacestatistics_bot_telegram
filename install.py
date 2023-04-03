@@ -2,6 +2,8 @@ import subprocess
 import sys
 import json
 # установка необходимых библиотек
+subprocess.check_call([sys.executable, "-m", "ensurepip"])
+subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", "pip"])
 subprocess.check_call([sys.executable, "-m", "pip", "install", "requests"])
 subprocess.check_call([sys.executable, "-m", "pip", "install", "python-telegram-bot==13.7"])
 
