@@ -25,6 +25,9 @@ def info_command(update: Update, context):
     elif result.get('code') == 'inactive':
         context.bot.send_message(chat_id=update.effective_chat.id, text=f'К сожалению, игрок "{context.args[0]}" ни разу не был сохранен в нашей базе данных, мы не сможем вывести его статистику =(')
         return
+    if result.get('code') == 'hidden':
+        context.bot.send_message(chat_id=update.effective_chat.id, text=f'Игрок "{context.args[0]}" скрыл свою статистику.\nИгрок ни разу не был сохранен в нашей базе данных, мы не сможем вывести его статистику =(')
+        return
     if response.status_code == 200:
         # если все ок, выводим результат в чат-бота в виде текста
         nickname = result['player']['nickname']
