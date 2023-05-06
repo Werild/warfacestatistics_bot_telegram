@@ -4,7 +4,7 @@ import telegram
 from telegram import ParseMode, Update
 def online_command(update: Update, context):
     # отправляем GET-запрос на указанный URL
-    url = 'https://wfbot.cf/api/online'
+    url = 'https://wfs.globalart.dev/api/online''
     response = requests.get(url)
 
     # проверяем статус ответа
