@@ -9,7 +9,7 @@ def clan_command(update: Update, context):
         return
     
     # отправляем GET-запрос на указанный URL с указанием названия клана
-    url = f'https://wfbot.cf/api/clan/{context.args[0]}'
+    url = f'https://wfs.globalart.dev/api/clan/{context.args[0]}'
     response = requests.get(url)
 
     # проверяем статус ответа
